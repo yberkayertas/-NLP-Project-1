@@ -54,3 +54,14 @@ def clean_text(text):
     text = re.sub(r"[^A-Za-z0-9(),!?\'\`]", " ", text)
     text = text.lower()
     return text.strip()
+
+Data Loading
+
+The dataset is loaded from Google Drive and only the relevant columns are used.
+
+Missing values are removed
+
+Columns are renamed for consistency
+df = df[['Text', 'Score']].dropna()
+df.rename(columns={'Text': 'text', 'Score': 'score'}, inplace=True)
+
