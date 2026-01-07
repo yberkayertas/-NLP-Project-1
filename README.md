@@ -1,67 +1,50 @@
-# Sentiment Analysis on Amazon Product Reviews
+# Amazon Product Reviews Sentiment Analysis
 
-This project focuses on sentiment analysis of Amazon product reviews using both traditional machine learning models and transformer-based deep learning models. The main objective is to compare classical NLP approaches with modern transformer architectures in terms of accuracy and F1-score.
+This project performs sentiment analysis on a large-scale dataset of 568,000 Amazon product reviews. It compares traditional Machine Learning approaches (Naive Bayes, Logistic Regression) with state-of-the-art Transformer-based models (DistilBERT).
 
----
+## Dataset Overview
+* **Source:** Amazon Fine Food Reviews
+* **Size:** ~568,000 reviews
+* **Features:** Text (Review body) and Score (1 to 5 stars)
+* **Target Labels:** * **Positive:** 4-5 stars
+    * **Neutral:** 3 stars
+    * **Negative:** 1-2 stars
 
-## Dataset Description
+### Class Distribution
+* Positive: 443,777
+* Negative: 82,037
+* Neutral: 42,640
 
-- Dataset: Amazon Product Reviews
-- Total samples: ~568,000
-- Source: Amazon Open Dataset
-- Columns used:
-  - Text: Review text
-  - Score: Rating from 1 to 5
+## Project Workflow
 
-### Sentiment Label Mapping
+### 1. Data Preprocessing
+* Cleaned text by removing URLs and special characters.
+* Converted all text to lowercase for consistency.
+* Handled missing values.
+* Split data into Train (80%), Validation (10%), and Test (10%) sets using stratified sampling to maintain class balance.
 
-The numeric review scores are mapped to sentiment labels as follows:
+### 2. Methodology
+The project implements three distinct modeling strategies:
 
-- Score 1–2 → Negative
-- Score 3 → Neutral
-- Score 4–5 → Positive
+* **Naive Bayes:** A baseline probabilistic classifier using TF-IDF vectorization (unigrams and bigrams).
+* **Logistic Regression:** A linear model optimized with balanced class weights to handle the dataset's inherent class imbalance.
+* **DistilBERT:** A small, fast, and light Transformer model based on the BERT architecture, fine-tuned specifically for this multi-class classification task.
 
-### Label Distribution
 
-- Positive: 443,777
-- Negative: 82,037
-- Neutral: 42,640
 
-The score is used as the ground truth label for sentiment classification.
+## Performance Comparison
 
----
+| Model | Accuracy | F1-Score (Macro) |
+| :--- | :---: | :---: |
+| Naive Bayes | ~0.86 | ~0.61 |
+| Logistic Regression | ~0.86 | ~0.74 |
+| **DistilBERT** | **~0.92** | **~0.80** |
 
-## Environment Setup
 
-Install the required libraries using the following command:
 
+## Installation & Usage
+
+### Requirements
+Ensure you have the following libraries installed:
 ```bash
-pip install -q transformers datasets scikit-learn pandas seaborn matplotlib tqdm
-
-
-The project is designed to run on Google Colab with GPU support for transformer training.
----
-
-# Data Preprocessing
-Text Cleaning
-*The following preprocessing steps are applied to the review text:
- Removal of URLs
- Removal of special characters
- Conversion to lowercase
-
-def clean_text(text):
-    text = re.sub(r"http\S+", "", text)
-    text = re.sub(r"[^A-Za-z0-9(),!?\'\`]", " ", text)
-    text = text.lower()
-    return text.strip()
-
-Data Loading
-
-The dataset is loaded from Google Drive and only the relevant columns are used.
-
-Missing values are removed
-
-Columns are renamed for consistency
-df = df[['Text', 'Score']].dropna()
-df.rename(columns={'Text': 'text', 'Score': 'score'}, inplace=True)
-
+pip install transformers datasets scikit-learn pandas seaborn matplotlib tqdm
