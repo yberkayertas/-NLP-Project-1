@@ -7,7 +7,9 @@ The complete code and implementation details can be found in the notebook: RE_Pr
 The core objective is to map product review text to three sentiment categories based on the user's score (1-5 scale):
 
 Negative: 1-2 Stars
+
 Neutral: 3 Stars
+
 Positive: 4-5 Stars
 
 The dataset is naturally imbalanced with a high volume of positive reviews. To address this, performance is evaluated using both Accuracy and F1-Score (macro average) to ensure the models perform reliably across all sentiment classes.
