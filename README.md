@@ -33,11 +33,39 @@ BERT (Transformer): Utilizes the bert-spanish-cased-finetuned-ner model for high
 
 SpaCy (CNN): A production-ready pipeline using a Convolutional Neural Network architecture.
 
-# Results
+# Key Findings & Performance
 
-# TABLE 1: POS Tagging Results
-Algorithm,Accuracy,F1 Score
-Perceptron,95.51%,95.44%
-Bigram (Context),91.76%,91.46%
-HMM,90.27%,90.23%
-Unigram (Baseline),90.28%,89.72%
+# POS Tagging Performance
+In the POS tagging task, the Perceptron model outperformed all other statistical methods, showing the strength of discriminative learning.
+
+Perceptron: 95.51% Accuracy | 95.44% F1 Score
+
+Bigram (Context): 91.76% Accuracy | 91.46% F1 Score
+
+HMM: 90.27% Accuracy | 90.23% F1 Score
+
+Unigram (Baseline): 90.28% Accuracy | 89.72% F1 Score
+
+# NER Performance
+For the NER task, while BERT reached the highest raw accuracy, SpaCy maintained a more balanced F1 Score across the entity classes.
+
+BERT (Transformer): 96.16% Accuracy | 80.64% F1 Score
+
+CRF: 95.69% Accuracy | 73.93% F1 Score
+
+SpaCy (CNN): 84.22% Accuracy | 84.35% F1 Score
+
+# Installation & Requirements
+To run the notebook, ensure you have the following libraries installed:
+
+pip install nltk sklearn sklearn-crfsuite spacy pandas torch transformers seqeval
+python -m spacy download es_core_news_sm
+
+# How to Use
+
+Open project2 (1).ipynb in Jupyter Notebook or Google Colab.
+
+Run the Dataset & Preprocessing section to download necessary NLTK corpora.
+
+Execute the cells sequentially to train the taggers and view the evaluation metrics.
+
