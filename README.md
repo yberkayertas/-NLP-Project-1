@@ -16,45 +16,69 @@ The dataset is naturally imbalanced with a high volume of positive reviews. To a
 
 # Tech Stack and Libraries
 Language: Python
+
 Data Manipulation: Pandas, Numpy
+
 Visualization: Matplotlib, Seaborn
+
 Machine Learning: Scikit-learn (Naive Bayes, Logistic Regression, SVM, Random Forest)
+
 Deep Learning: TensorFlow/Keras (CNN)
+
 Transformer Models: Hugging Face Transformers (DistilBERT)
 
 # Preprocessing Pipeline
 The text data underwent the following cleaning steps before training:
+
 URL removal via regex.
+
 Removal of special characters and punctuation.
+
 Conversion of text to lowercase.
+
 Dataset splitting: 80% Training, 10% Validation, and 10% Testing (Stratified).
+
 
 # Model Performance Results
 Below are the accuracy and F1-score results achieved by each model during the validation phase:
 
 # DistilBERT
 Accuracy: 0.92
+
 F1-Score: 0.80
+
 Interpretation: Best overall performance; effectively captures contextual nuances.
+
 # CNN (Convolutional Neural Network)
 Accuracy: 0.92
+
 F1-Score: 0.80
+
 Interpretation: High performance via local pattern recognition in text sequences.
+
 # SVM (Linear SVC)
 Accuracy: 0.91
+
 F1-Score: 0.78
+
 Interpretation: The most effective traditional machine learning algorithm for this dataset.
 # Logistic Regression
 Accuracy: 0.86
+
 F1-Score: 0.74
+
 Interpretation: Balanced and efficient for large-scale text classification.
 # Naive Bayes
 Accuracy: 0.86
+
 F1-Score: 0.61
+
 Interpretation: Strong baseline but struggles with identifying neutral sentiment.
 # Random Forest
 Accuracy: 0.79
+
 F1-Score: 0.37
+
 Interpretation: Underperformed due to tree depth constraints on high-dimensional text data.
 
 # Conclusions
