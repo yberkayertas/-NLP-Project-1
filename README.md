@@ -83,13 +83,19 @@ Interpretation: Underperformed due to tree depth constraints on high-dimensional
 
 # Conclusions
 Transformer-based models (DistilBERT) and Deep Learning (CNN) provided the highest accuracy, demonstrating the importance of capturing word order and context.
+
 Traditional models like SVM performed surprisingly well and are significantly faster to train than neural networks.
+
 The F1-Score across all models highlights the challenge of identifying "Neutral" reviews, which often contain mixed signals that are harder to classify than "Positive" or "Negative" ones.
 
 # Usage
 To reproduce the results:
+
 Install requirements: pip install transformers datasets scikit-learn pandas seaborn matplotlib tqdm
+
 Open RE_Project1_(Sentiment_Analysis_on_Amazon_Product_Reviews)(1).ipynb in a Jupyter or Google Colab environment.
+
 Ensure the Amazon Reviews.csv file is accessible via the path specified in the data loading section.
+
 Run the cells sequentially to perform preprocessing, training, and evaluation.
 
